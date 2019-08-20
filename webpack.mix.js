@@ -18,6 +18,6 @@ mix.version()
 if (!mix.inProduction()) {
     mix.sourceMaps()
     mix.browserSync({
-        proxy: 'http://samarnmitr-preorder.localhost'
+        proxy: 'http://localhost'
     })
 }

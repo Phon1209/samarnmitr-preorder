@@ -1,6 +1,6 @@
 const DEV = false
 
-const webUrl = 'http://samarnmitr-preorder.localhost/'
+const webUrl = 'http://localhost/'
 const apiUrl = '/api/'
 const baseUrl = ''
 

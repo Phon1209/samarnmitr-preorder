@@ -103,6 +103,25 @@ class Cart extends Component {
                     </div>
                 </div>
 
+                <div className="row identification-row no-gutters">
+                    <div className="col-12 col-md-6">
+                        <h2 className="id-label-line1">ใส่ข้อมูลยืนยันตัวตน</h2>
+                        <h3 className="id-label-line2">(นักเรียน-เลขประจำตัว / ครู-ชื่อนามสกุล)</h3>
+                    </div>
+                    <div className="col-12 col-md-6 identification-input-container">
+                        <form className="form-inline">
+                            <input type="text" className="form-control mb-2 mr-sm-2 id-field hide-mobile"
+                                   {...idInputProps} />
+                            <input type="text" className="form-control form-control-sm id-field hide-desktop"
+                                   {...idInputProps} />
+                            <button type="submit" className="btn btn-danger mb-2 id-button hide-mobile"
+                                    onClick={this.handleSubmit} disabled={isSending}>บันทึก</button>
+                            <button type="submit" className="btn btn-danger btn-sm id-button hide-desktop"
+                                    onClick={this.handleSubmit} disabled={isSending}>บันทึก</button>
+                        </form>
+                    </div>
+                </div>
+
                 <div className="cart-footer hide-mobile">
 
                     <button disabled={buttonDisabled} onClick={this.handleOrderClick}>

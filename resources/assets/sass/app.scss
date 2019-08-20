@@ -13,7 +13,10 @@
 @import '~react-responsive-carousel/lib/styles/carousel.css';
 
 body {
-    background: #415164;
+    background: #f5dfad;
+    background: url('/images/bg.jpg');
+    background-size: 100% auto;
+    background-repeat: repeat-y;
     font-family: "DB Heavent", "Helvetica", sans-serif;
 }
 
@@ -1348,14 +1351,14 @@ img.fit-parent {
 .cover-mobile {
     @extend .cover;
     @extend .hide-desktop;
-
+    // visibility: hidden;
     top: 44px;
 }
 
 .cover-desktop {
     @extend .cover;
     @extend .hide-mobile;
-
+    // visibility: hidden;
     top: 64px;
 }
 
@@ -1365,7 +1368,13 @@ img.fit-parent {
 }
 
 .home-top {
-    margin-top: calc(100vw * 0.3);
+    @include mobile {
+        margin-top: calc(100vw * 0.3);
+    }
+
+    @include desktop {
+        margin-top: calc(100vw * 0.485);
+    }
 }
 
 .order-list-item {
