@@ -22,9 +22,9 @@ export const replace = (collection, match, newItem) =>
     collection.map(item => item === match ? newItem : item)
 
 export const getImage = id => "/images/products/" + id + "/thumbnail.jpg"
-export const getSlideImage = (id, position) => "/images/products/" + id + "/slide" + position + ".jpg"
-export const getSlideImageMobile = (id, position) => "/images/products/" + id + "/ms" + position + ".jpg"
-export const getSlideImageRetina = (id, position) => "/images/products/" + id + "/slide" + position + "-2x.jpg"
+export const getSlideImage = (id, position) => "/images/products/" + id + "/slide" + position + ".png"
+export const getSlideImageMobile = (id, position) => "/images/products/" + id + "/ms" + position + ".png"
+export const getSlideImageRetina = (id, position) => "/images/products/" + id + "/slide" + position + ".png"
 
 export const shuffle = arr => {
     const a = [...arr]

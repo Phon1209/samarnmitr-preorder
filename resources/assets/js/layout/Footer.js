@@ -23,20 +23,20 @@ export default class Footer extends Component {
                 </h1>
                 <div className="row justify-content-center sponsor-container">
                     <div className="col-auto sponsors">
-                        <img src={sponsor1} />
+                        <a href="https://web.facebook.com/SuankularbAlumni/?_rdc=1&_rdr"><img src={sponsor1} /></a>
                     </div>
                     <div className="col-auto sponsors">
-                        <img src={sponsor2} />
+                        <a href="https://www.hachiban.co.th/th/home/"><img src={sponsor2} /></a>
                     </div>
-                    <div className="col-auto sponsors">
+                    { /*}<div className="col-auto sponsors">
                         <img src={sponsor3} />
                     </div>
                     <div className="col-auto sponsors">
                         <img src={sponsor4} />
-                    </div>
+                    </div> */ }
                 </div>
-                <img className="hide-mobile" src={kornor} />
-                <img className="kornor-mobile hide-desktop" src={kornorMobile} />
+                {/*<img className="hide-mobile" src={kornor} />
+                <img className="kornor-mobile hide-desktop" src={kornorMobile} />*/}
             </div>
         )
     }
