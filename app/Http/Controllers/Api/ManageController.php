@@ -53,6 +53,19 @@ class ManageController extends Controller
                     $order->save();
                 }
                 break;
+            case "togglePartialReceivedStatus":
+                alert("Hello");
+                if ($order['reception2_id']) {
+                    $order['reception2_id'] = null;
+                    $order->save();
+                } else {
+                    $reception = Reception::create([
+                        'sender_id' => Auth::user()->id,
+                    ]);
+                    $order['reception2_id'] = $reception['id'];
+                    $order->save();
+                }
+                break;
         }
         return response()->json([], 200);
     }

@@ -88,6 +88,23 @@ class OrderStatus extends Component {
             .catch(console.log)
     }
 
+    handleTogglePartialReceivedStatus(e) {
+        e.preventDefault()
+
+        this.setState({
+            isSending: true,
+        })
+
+        editOrder({
+            id: this.state.id,
+            key: this.state.key,
+            action: 'togglePartialReceivedStatus',
+        })
+            .then(() => {
+                this.reloadStatus()
+            })
+            .catch(console.log)
+    }
     render() {
         if (this.state.isLoading) {
             return <h1>Loading...</h1>
@@ -102,6 +119,9 @@ class OrderStatus extends Component {
             </button>
         const receivedStatusToggler = <button className="btn btn-primary" onClick={this.handleToggleReceivedStatus} disabled={isSending}>
             { order.reception ? 'set as not received' : 'set as received' }
+            </button>
+        const partialReceivedStatusToggler = <button className="btn btn-primary" onClick={this.handleTogglePartialReceivedStatus} disabled={isSending}>
+            { order.partialreception ? 'set as full received' : 'set as partial received' }
             </button>
         const { products, sets, value } = this.props
         const entries = order.cartContents.map(item => ({
@@ -163,6 +183,13 @@ class OrderStatus extends Component {
                                     </td>
                                 </tr>
                                 { order.reception ? <React.Fragment>
+                                    <tr>
+                                        <td>Partial Received</td>
+                                        <td>
+                                            { order.reception2 ? 'Yes' : 'No' }
+                                            { partialReceivedStatusToggler }
+                                        </td>
+                                    </tr>
                                     <tr>
                                         <td>Received at</td>
                                         <td>{ order.reception.created_at }</td>

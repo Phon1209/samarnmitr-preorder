@@ -102,7 +102,7 @@ class Cart extends Component {
                         </button>
                     </div>
                 </div>
-
+{/*
                 <div className="row identification-row no-gutters">
                     <div className="col-12 col-md-6">
                         <h2 className="id-label-line1">ใส่ข้อมูลยืนยันตัวตน</h2>
@@ -121,7 +121,7 @@ class Cart extends Component {
                         </form>
                     </div>
                 </div>
-
+*/}
                 <div className="cart-footer hide-mobile">
 
                     <button disabled={buttonDisabled} onClick={this.handleOrderClick}>
