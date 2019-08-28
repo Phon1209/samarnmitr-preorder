@@ -37,3 +37,16 @@ export const shuffle = arr => {
     }
     return a;
 }
+
+export const isInLot1 = content => {
+    return content.id != 5 && content.id != 6 && content.id != 12
+}
+
+export const getReceivedClass = (content, received, received2) => {
+    const inLot1 = isInLot1(content)
+    if (!content.is_set && ((received && inLot1) || (received2 && !inLot1))) {
+        return ' received'
+    } else {
+        return ''
+    }
+}

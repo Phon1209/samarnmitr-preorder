@@ -2,18 +2,19 @@ import React from 'react'
 import { withLocalize } from 'react-localize-redux'
 
 import NumericUpDown from '../Product/NumericUpDown'
-import { getImage } from '../../shopUtils'
+import { getImage, getReceivedClass } from '../../shopUtils'
 
-export default withLocalize(({ product, item, onAdd, onRemove, translate, readOnly = false, forceContents = false }) => {
+export default withLocalize(({ product, item, onAdd, onRemove, translate, readOnly = false, forceContents = false, received1 = false, received2 = false }) => {
     const allCustoms = item.info.customizations
     const customizations = allCustoms[0].values
     const customizationLabels = product.is_set ? [] : Object.keys(customizations).map(name => {
         return translate('shop.customizations.' + name + '.values.' + customizations[name])
     }).join(' ')
     const customizationsSuffix = customizationLabels.length ? '(' + customizationLabels + ')' : null
+    const receivedClass = getReceivedClass(product, received1, received2)
     return (
         <div className="cart-item-background">
-            <div className="cart-item">
+            <div className={"cart-item" + receivedClass}>
                 <div className="col-auto">
                     <div className="product-pic">
                         <img className="fit-parent" src={getImage(product.id)} />
@@ -61,7 +62,7 @@ export default withLocalize(({ product, item, onAdd, onRemove, translate, readOn
                 </div>
             </div>
             { product.is_set ? product.contents.map((content, i) => {
-                let className = 'cart-item small'
+                let className = 'cart-item small' + getReceivedClass(content, received1, received2)
                 if (!forceContents) {
                     className += ' hide-mobile'
                 }

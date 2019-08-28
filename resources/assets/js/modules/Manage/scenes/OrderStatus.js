@@ -23,7 +23,7 @@ class OrderStatus extends Component {
 
         this.handleTogglePaidStatus = this.handleTogglePaidStatus.bind(this)
         this.handleToggleReceivedStatus = this.handleToggleReceivedStatus.bind(this)
-        this.handleTogglePartialReceivedStatus = this.handleTogglePartialReceivedStatus.bind(this)
+        this.handleToggleReceived2Status = this.handleToggleReceived2Status.bind(this)
     }
 
     componentWillMount() {
@@ -89,7 +89,7 @@ class OrderStatus extends Component {
             .catch(console.log)
     }
 
-    handleTogglePartialReceivedStatus(e) {
+    handleToggleReceived2Status(e) {
         e.preventDefault()
 
         this.setState({
@@ -119,10 +119,10 @@ class OrderStatus extends Component {
             { order.chargeStatus ? 'set as not paid' : 'set as paid' }
             </button>
         const receivedStatusToggler = <button className="btn btn-primary" onClick={this.handleToggleReceivedStatus} disabled={isSending}>
-            { order.reception ? 'set as not received' : 'set as received' }
+            { order.reception ? 'set lot 1 not received' : 'set lot 1 received' }
             </button>
-        const partialReceivedStatusToggler = <button className="btn btn-primary" onClick={this.handleTogglePartialReceivedStatus} disabled={isSending}>
-            { order.reception2 ? 'set as full received' : 'set as partial received' }
+        const received2StatusToggler = <button className="btn btn-primary" onClick={this.handleToggleReceived2Status} disabled={isSending}>
+            { order.reception2 ? 'set lot 2 not received' : 'set lot 2 received' }
             </button>
         const { products, sets, value } = this.props
         const entries = order.cartContents.map(item => ({
@@ -177,7 +177,7 @@ class OrderStatus extends Component {
                                     </tr>
                                 </React.Fragment> : null }
                                 <tr>
-                                    <td>Received</td>
+                                    <td>Lot 1 received</td>
                                     <td>
                                         { order.reception ? 'Yes' : 'No' }
                                         { receivedStatusToggler }
@@ -185,19 +185,28 @@ class OrderStatus extends Component {
                                 </tr>
                                 { order.reception ? <React.Fragment>
                                     <tr>
-                                        <td>Partial Received</td>
-                                        <td>
-                                            { order.reception2 ? 'Yes' : 'No' }
-                                            { partialReceivedStatusToggler }
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td>Received at</td>
                                         <td>{ order.reception.created_at }</td>
                                     </tr>
                                     <tr>
-                                        <td>Sender</td>
+                                        <td>By</td>
                                         <td>{ order.reception.sender.name }</td>
+                                    </tr>
+                                </React.Fragment> : null }<tr>
+                                    <td>Lot 2 received</td>
+                                    <td>
+                                        { order.reception2 ? 'Yes' : 'No' }
+                                        { received2StatusToggler }
+                                    </td>
+                                </tr>
+                                { order.reception2 ? <React.Fragment>
+                                    <tr>
+                                        <td>Received at</td>
+                                        <td>{ order.reception2.created_at }</td>
+                                    </tr>
+                                    <tr>
+                                        <td>By</td>
+                                        <td>{ order.reception2.sender.name }</td>
                                     </tr>
                                 </React.Fragment> : null }
                             </tbody>
@@ -212,7 +221,8 @@ class OrderStatus extends Component {
                                     { entries.map((entry, i) => {
                                         const { item, product } = entry
                                         return <Item key={i} product={product} item={item} index={i} forceContents
-                                                     onAdd={() => {}} onRemove={() => {}} readOnly />
+                                                     onAdd={() => {}} onRemove={() => {}} readOnly
+                                                     received1={order.reception} received2={order.reception2} />
                                     }) }
                                 </div>
                             </div>
