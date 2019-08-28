@@ -23,6 +23,7 @@ class OrderStatus extends Component {
 
         this.handleTogglePaidStatus = this.handleTogglePaidStatus.bind(this)
         this.handleToggleReceivedStatus = this.handleToggleReceivedStatus.bind(this)
+        this.handleTogglePartialReceivedStatus = this.handleTogglePartialReceivedStatus.bind(this)
     }
 
     componentWillMount() {
@@ -121,7 +122,7 @@ class OrderStatus extends Component {
             { order.reception ? 'set as not received' : 'set as received' }
             </button>
         const partialReceivedStatusToggler = <button className="btn btn-primary" onClick={this.handleTogglePartialReceivedStatus} disabled={isSending}>
-            { order.partialreception ? 'set as full received' : 'set as partial received' }
+            { order.reception2 ? 'set as full received' : 'set as partial received' }
             </button>
         const { products, sets, value } = this.props
         const entries = order.cartContents.map(item => ({

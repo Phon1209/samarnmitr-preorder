@@ -54,7 +54,6 @@ class ManageController extends Controller
                 }
                 break;
             case "togglePartialReceivedStatus":
-                alert("Hello");
                 if ($order['reception2_id']) {
                     $order['reception2_id'] = null;
                     $order->save();
@@ -74,6 +73,6 @@ class ManageController extends Controller
         return Order::where([
             'user_id' => $data['id'],
             'key' => $data['key'],
-        ])->with('reception')->with('reception.sender')->firstOrFail();
+        ])->with('reception')->with('reception.sender')->with('reception2')->with('reception2.sender')->firstOrFail();
     }
 }

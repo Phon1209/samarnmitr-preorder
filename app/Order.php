@@ -47,4 +47,8 @@ class Order extends Model
     public function reception() {
         return $this->belongsTo(Reception::class);
     }
+
+    public function reception2() {
+        return $this->belongsTo(Reception::class);
+    }
 }
