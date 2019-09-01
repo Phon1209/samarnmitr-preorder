@@ -135,7 +135,7 @@ class OrderStatus extends Component {
                 <div className="manage-card">
                     <h1>
                         { (order.chargeStatus && order.chargeStatus.status === 'successful') ? 'จ่ายแล้ว ' : 'ยังไม่จ่าย ' }
-                        { (order.reception) ? 'รับแล้ว' : 'ยังไม่รับ' }
+                        { (order.reception) ? ((order.reception2)? 'รับแล้ว':'รับบางส่วนแล้ว') : 'ยังไม่รับ' }
                     </h1>
                     <div className="table-responsive">
                         <table className="table">
